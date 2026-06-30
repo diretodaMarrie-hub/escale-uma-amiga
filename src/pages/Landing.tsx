@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { supabase } from '../lib/supabase';
 import { Copy, Share2, Check, ArrowRight } from 'lucide-react';
+import logo from '../assets/logo.png';
 
 const formSchema = z.object({
   participant_name: z.string().min(2, 'Nome é obrigatório'),
@@ -70,10 +71,12 @@ export default function Landing() {
       <div className="max-w-xl mx-auto px-6 py-12 flex flex-col min-h-screen">
         
         {/* Header / Logo space */}
-        <div className="flex justify-center mb-12">
-          <div className="text-2xl font-semibold tracking-tighter text-emerald-800">
-            Marrie for Babies
-          </div>
+        <div className="flex justify-center mb-8">
+          <img 
+            src={logo} 
+            alt="Marrie for Babies" 
+            className="h-32 w-auto object-contain animate-fade-in"
+          />
         </div>
 
         <main className="flex-1 flex flex-col justify-center">

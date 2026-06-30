@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { supabase } from '../lib/supabase';
 import { useNavigate } from 'react-router-dom';
+import logo from '../assets/logo.png';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -32,6 +33,13 @@ export default function Login() {
   return (
     <div className="min-h-screen bg-neutral-50 flex items-center justify-center p-4">
       <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 border border-neutral-100">
+        <div className="flex justify-center mb-6">
+          <img 
+            src={logo} 
+            alt="Marrie for Babies" 
+            className="h-24 w-auto object-contain"
+          />
+        </div>
         <h1 className="text-2xl font-bold text-neutral-900 mb-6 text-center">Área Restrita</h1>
         
         {error && (

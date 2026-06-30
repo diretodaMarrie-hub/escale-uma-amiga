@@ -5,6 +5,7 @@ import { Participant } from '../types';
 import { format, isToday, isThisWeek } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { Download, LogOut, Trash2, Search, Eye, X } from 'lucide-react';
+import logo from '../assets/logo.png';
 
 export default function Admin() {
   const [participants, setParticipants] = useState<Participant[]>([]);
@@ -116,8 +117,16 @@ export default function Admin() {
 
   return (
     <div className="min-h-screen bg-neutral-50 font-sans text-neutral-800">
-      <header className="bg-white border-b border-neutral-200 px-6 py-4 flex items-center justify-between sticky top-0 z-10">
-        <h1 className="text-xl font-bold text-emerald-800">Admin | Escale uma Amiga</h1>
+      <header className="bg-white border-b border-neutral-200 px-6 py-3 flex items-center justify-between sticky top-0 z-10">
+        <div className="flex items-center gap-3">
+          <img 
+            src={logo} 
+            alt="Marrie for Babies" 
+            className="h-10 w-auto object-contain"
+          />
+          <span className="text-neutral-300 font-light">|</span>
+          <h1 className="text-base font-semibold text-neutral-700">Painel Admin</h1>
+        </div>
         <button 
           onClick={handleLogout}
           className="text-sm font-medium text-neutral-600 hover:text-neutral-900 flex items-center"
