@@ -61,8 +61,7 @@ export default function Landing() {
   };
 
   const handleShareWhatsApp = () => {
-    const message = `Amiga! 💚\n\nAcabei de participar da campanha "Escale uma Amiga" da Marrie for Babies.\n\nTambém consegui um desconto para você.\n\nhttps://marrieforbabies.com.br/discount/ESCALADA-4-3-3-CM26X2FUTT1`;
-    const url = `https://wa.me/?text=${encodeURIComponent(message)}`;
+    const url = "https://api.whatsapp.com/send/?text=Amiga%21%20%E2%9A%BD%0A%0AAcabei%20de%20participar%20da%20campanha%20%22Escale%20uma%20Amiga%22%20da%20Marrie%20for%20Babies%20e%20consegui%20um%20cupom%20de%2020%25%20OFF%20pra%20voc%C3%AA%21%20%F0%9F%8E%89%0A%0A%F0%9F%91%89%20Usa%20meu%20link%20e%20aproveita%20o%20desconto%3A%0Ahttps%3A%2F%2Fmarrieforbabies.com.br%2Fdiscount%2FESCALADA-4-3-3-CM26X2FUTT1%0A%0ACorre%2C%20vale%20muito%20a%20pena%21%20%F0%9F%92%9B%F0%9F%8D%BC&type=custom_url&app_absent=0";
     window.open(url, '_blank');
   };
 
@@ -240,7 +239,7 @@ export default function Landing() {
                   className="w-full flex items-center justify-center px-6 py-4 bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-xl font-medium transition-colors shadow-lg shadow-[#25D366]/20"
                 >
                   <Share2 className="w-5 h-5 mr-2" />
-                  Compartilhar no WhatsApp
+                  Compartilhar com amiga no Wpp
                 </button>
               </div>
             </div>
