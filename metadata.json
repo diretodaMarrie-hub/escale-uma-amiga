@@ -1,0 +1,6 @@
+{
+  "name": "Escale uma Amiga",
+  "description": "Landing page para a campanha de indicação Escale uma Amiga com painel administrativo, integração Supabase e design World Cup Feminina.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
