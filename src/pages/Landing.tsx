@@ -8,10 +8,7 @@ import logo from '../assets/logo.png';
 
 const formSchema = z.object({
   participant_name: z.string().min(2, 'Nome é obrigatório'),
-  participant_email: z.string().email('E-mail inválido'),
   participant_phone: z.string().min(10, 'WhatsApp é obrigatório'),
-  participant_city: z.string().min(2, 'Cidade é obrigatória'),
-  participant_state: z.string().length(2, 'Use a sigla do estado (Ex: SP)'),
   friend_name: z.string().min(2, 'Nome da amiga é obrigatório'),
   friend_phone: z.string().min(10, 'WhatsApp da amiga é obrigatório'),
 });
@@ -124,48 +121,14 @@ export default function Landing() {
                     {errors.participant_name && <p className="text-red-500 text-xs mt-1">{errors.participant_name.message}</p>}
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-neutral-700 mb-1">E-mail</label>
-                      <input
-                        {...register('participant_email')}
-                        type="email"
-                        className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all outline-none"
-                        placeholder="maria@exemplo.com"
-                      />
-                      {errors.participant_email && <p className="text-red-500 text-xs mt-1">{errors.participant_email.message}</p>}
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-neutral-700 mb-1">WhatsApp</label>
-                      <input
-                        {...register('participant_phone')}
-                        className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all outline-none"
-                        placeholder="(11) 99999-9999"
-                      />
-                      {errors.participant_phone && <p className="text-red-500 text-xs mt-1">{errors.participant_phone.message}</p>}
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    <div className="col-span-2">
-                      <label className="block text-sm font-medium text-neutral-700 mb-1">Cidade</label>
-                      <input
-                        {...register('participant_city')}
-                        className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all outline-none"
-                        placeholder="São Paulo"
-                      />
-                      {errors.participant_city && <p className="text-red-500 text-xs mt-1">{errors.participant_city.message}</p>}
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-neutral-700 mb-1">Estado</label>
-                      <input
-                        {...register('participant_state')}
-                        maxLength={2}
-                        className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all outline-none uppercase"
-                        placeholder="SP"
-                      />
-                      {errors.participant_state && <p className="text-red-500 text-xs mt-1">{errors.participant_state.message}</p>}
-                    </div>
+                  <div>
+                    <label className="block text-sm font-medium text-neutral-700 mb-1">WhatsApp</label>
+                    <input
+                      {...register('participant_phone')}
+                      className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all outline-none"
+                      placeholder="(11) 99999-9999"
+                    />
+                    {errors.participant_phone && <p className="text-red-500 text-xs mt-1">{errors.participant_phone.message}</p>}
                   </div>
                 </div>
 

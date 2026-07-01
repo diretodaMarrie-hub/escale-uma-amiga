@@ -60,8 +60,8 @@ export default function Admin() {
     if (participants.length === 0) return;
     
     const headers = [
-      'Data', 'Nome Participante', 'Email', 'WhatsApp Participante', 
-      'Cidade', 'Estado', 'Nome Amiga', 'WhatsApp Amiga', 'Status'
+      'Data', 'Nome Participante', 'WhatsApp Participante', 
+      'Nome Amiga', 'WhatsApp Amiga', 'Status'
     ];
     
     const csvContent = [
@@ -69,10 +69,7 @@ export default function Admin() {
       ...participants.map(p => [
         format(new Date(p.created_at), 'dd/MM/yyyy HH:mm'),
         `"${p.participant_name}"`,
-        p.participant_email,
         p.participant_phone,
-        `"${p.participant_city}"`,
-        p.participant_state,
         `"${p.friend_name}"`,
         p.friend_phone,
         p.status
@@ -98,17 +95,14 @@ export default function Admin() {
     const matchesSearch = 
       p.participant_name.toLowerCase().includes(searchLower) ||
       p.friend_name.toLowerCase().includes(searchLower) ||
-      p.participant_email.toLowerCase().includes(searchLower) ||
       p.participant_phone.includes(search) ||
       p.friend_phone.includes(search);
       
-    const matchesState = filterState ? p.participant_state === filterState : true;
     const matchesStatus = filterStatus ? p.status === filterStatus : true;
 
-    return matchesSearch && matchesState && matchesStatus;
+    return matchesSearch && matchesStatus;
   });
 
-  const uniqueStates = Array.from(new Set(participants.map(p => p.participant_state))).sort();
   const uniqueStatuses = Array.from(new Set(participants.map(p => p.status))).sort();
 
   if (loading) {
@@ -171,14 +165,6 @@ export default function Admin() {
               />
             </div>
             <select 
-              value={filterState}
-              onChange={(e) => setFilterState(e.target.value)}
-              className="px-3 py-2 bg-neutral-50 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
-            >
-              <option value="">Todos os Estados</option>
-              {uniqueStates.map(st => <option key={st} value={st}>{st}</option>)}
-            </select>
-            <select 
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
               className="px-3 py-2 bg-neutral-50 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
@@ -218,7 +204,6 @@ export default function Admin() {
                     </td>
                     <td className="px-6 py-4">
                       <div className="font-medium text-neutral-900">{p.participant_name}</div>
-                      <div className="text-xs text-neutral-400">{p.participant_email}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">{p.participant_phone}</td>
                     <td className="px-6 py-4">
@@ -282,16 +267,8 @@ export default function Admin() {
                     <div className="font-medium text-neutral-900">{selectedParticipant.participant_name}</div>
                   </div>
                   <div>
-                    <div className="text-neutral-500 mb-1">E-mail</div>
-                    <div className="font-medium text-neutral-900">{selectedParticipant.participant_email}</div>
-                  </div>
-                  <div>
                     <div className="text-neutral-500 mb-1">WhatsApp</div>
                     <div className="font-medium text-neutral-900">{selectedParticipant.participant_phone}</div>
-                  </div>
-                  <div>
-                    <div className="text-neutral-500 mb-1">Localização</div>
-                    <div className="font-medium text-neutral-900">{selectedParticipant.participant_city} - {selectedParticipant.participant_state}</div>
                   </div>
                 </div>
               </div>
